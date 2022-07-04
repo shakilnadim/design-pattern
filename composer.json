@@ -1,0 +1,9 @@
+{
+    "name": "shakil/design-pattern",
+    "autoload": {
+        "psr-4": {
+            "DesignPattern\\": "src/"
+        }
+    },
+    "require": {}
+}
