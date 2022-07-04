@@ -1,5 +1,5 @@
 {
-    "name": "shakil/design-pattern",
+    "name": "shakilnadim/design-pattern",
     "autoload": {
         "psr-4": {
             "DesignPattern\\": "src/"
