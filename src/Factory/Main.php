@@ -15,7 +15,13 @@ class Main
         $pizza = $nyStore->orderPizza('cheese');
         echo "Ethan ordered a {$pizza->getName()}\n";
 
+        echo "=====================================================\n";
+
         $pizza = $chicagoStore->orderPizza('pepperoni');
+        echo "Joel ordered a {$pizza->getName()}\n";
+        echo "=====================================================\n";
+
+        $pizza = $chicagoStore->orderPizza('veggie');
         echo "Joel ordered a {$pizza->getName()}\n";
     }
 }

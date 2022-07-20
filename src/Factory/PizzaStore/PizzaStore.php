@@ -2,7 +2,7 @@
 
 namespace DesignPattern\Factory\PizzaStore;
 
-use DesignPattern\Factory\Pizza;
+use DesignPattern\Factory\Pizzas\Pizza;
 
 abstract class PizzaStore
 {

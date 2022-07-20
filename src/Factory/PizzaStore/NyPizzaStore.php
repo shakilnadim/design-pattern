@@ -2,26 +2,33 @@
 
 namespace DesignPattern\Factory\PizzaStore;
 
-use DesignPattern\Factory\NyStylePizza\NyStyleCheesePizza;
-use DesignPattern\Factory\NyStylePizza\NyStyleClamPizza;
-use DesignPattern\Factory\NyStylePizza\NyStylePepperoniPizza;
-use DesignPattern\Factory\NyStylePizza\NyStyleVeggiePizza;
-use DesignPattern\Factory\Pizza;
+use DesignPattern\Factory\Ingredients\NyPizzaIngredientFactory;
+use DesignPattern\Factory\Pizzas\CheesePizza;
+use DesignPattern\Factory\Pizzas\ClamPizza;
+use DesignPattern\Factory\Pizzas\PepperoniPizza;
+use DesignPattern\Factory\Pizzas\Pizza;
+use DesignPattern\Factory\Pizzas\VeggiePizza;
 
 class NyPizzaStore extends PizzaStore
 {
 
     public function createPizza(string $type): Pizza|null
     {
+        $pizza = null;
+        $ingredientFactory = new NyPizzaIngredientFactory();
         if ($type === 'cheese') {
-            return new NyStyleCheesePizza();
+            $pizza = new CheesePizza($ingredientFactory);
+            $pizza->setName('New York Style Cheese Pizza');
         } elseif ($type === 'pepperoni') {
-            return new NyStylePepperoniPizza();
+            $pizza = new PepperoniPizza($ingredientFactory);
+            $pizza->setName('New York Style Pepperoni Pizza');
         } elseif ($type === 'clam') {
-            return new NyStyleClamPizza();
+            $pizza = new ClamPizza($ingredientFactory);
+            $pizza->setName('New York Style Clam Pizza');
         } elseif ($type === 'veggie') {
-            return new NyStyleVeggiePizza();
+            $pizza = new VeggiePizza($ingredientFactory);
+            $pizza->setName('New York Style Veggie Pizza');
         }
-        return null;
+        return $pizza;
     }
 }

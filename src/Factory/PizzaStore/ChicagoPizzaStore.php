@@ -2,27 +2,34 @@
 
 namespace DesignPattern\Factory\PizzaStore;
 
-use DesignPattern\Factory\ChicagoStylePizza\ChicagoStyleCheesePizza;
-use DesignPattern\Factory\ChicagoStylePizza\ChicagoStyleClamPizza;
-use DesignPattern\Factory\ChicagoStylePizza\ChicagoStylePepperoniPizza;
-use DesignPattern\Factory\ChicagoStylePizza\ChicagoStyleVeggiePizza;
-use DesignPattern\Factory\Pizza;
-use JetBrains\PhpStorm\Pure;
+
+use DesignPattern\Factory\Ingredients\ChicagoPizzaIngredientFactory;
+use DesignPattern\Factory\Pizzas\CheesePizza;
+use DesignPattern\Factory\Pizzas\ClamPizza;
+use DesignPattern\Factory\Pizzas\PepperoniPizza;
+use DesignPattern\Factory\Pizzas\Pizza;
+use DesignPattern\Factory\Pizzas\VeggiePizza;
 
 class ChicagoPizzaStore extends PizzaStore
 {
 
     public function createPizza(string $type): Pizza|null
     {
+        $pizza = null;
+        $ingredientFactory = new ChicagoPizzaIngredientFactory();
         if ($type === 'cheese') {
-            return new ChicagoStyleCheesePizza();
+            $pizza = new CheesePizza($ingredientFactory);
+            $pizza->setName('Chicago Style Cheese Pizza');
         } elseif ($type === 'pepperoni') {
-            return new ChicagoStylePepperoniPizza();
+            $pizza = new PepperoniPizza($ingredientFactory);
+            $pizza->setName('Chicago Style Pepperoni Pizza');
         } elseif ($type === 'clam') {
-            return new ChicagoStyleClamPizza();
+            $pizza = new ClamPizza($ingredientFactory);
+            $pizza->setName('Chicago Style Clam Pizza');
         } elseif ($type === 'veggie') {
-            return new ChicagoStyleVeggiePizza();
+            $pizza = new VeggiePizza($ingredientFactory);
+            $pizza->setName('Chicago Style Veggie Pizza');
         }
-        return null;
+        return $pizza;
     }
 }
